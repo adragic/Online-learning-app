@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
+//use App\Answer;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -14,7 +14,10 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+        //  //
+        $answers =Answer::orderBy('created_at','desc')->get();
+        return view('forum', ['answers'=> $answers]);
+   
     }
 
     /**
@@ -43,6 +46,9 @@ class AnswerController extends Controller
         $request->user()->answers()->create([
             'answer_body' => $request->answer_body,
         ]);
+        //$request->question()->answers()->create([
+        //    'answer_body' => $request->answer_body,
+        //]);
            
         return redirect('/forum');
     }
@@ -90,10 +96,10 @@ class AnswerController extends Controller
     public function destroy(Answer $answer)
     {
         //
-        $this->authorize('destroy', $answer);
+       /* $this->authorize('destroy', $answer);
 
         $answer->delete();
 
-        return redirect('/forum');
+        return redirect('/forum');*/
     }
 }

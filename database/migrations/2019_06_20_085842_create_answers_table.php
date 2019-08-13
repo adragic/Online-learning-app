@@ -17,11 +17,15 @@ class CreateAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text('answer_body');
-            $table->integer('question_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('question_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            
+           
         });
+     /*  Schema::table('answers', function (Blueprint $table) {
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+        });*/
     }
-
     /**
      * Reverse the migrations.
      *

@@ -33,6 +33,7 @@ Route::get('/editquestion/{question}', 'QuestionController@edit');
 Route::patch('/question/{question}', 'QuestionController@update');
 //answers
 Route::post('/answer', 'AnswerController@store');
-Route::delete('/answer/{answer}', 'AnswerController@destroy');
+//Route::delete('/answer/{answer}', 'AnswerController@destroy');
+
 
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -18,25 +20,23 @@ class PostController extends Controller
         $request->user()->posts()->create([
             'body' => $request->body,
             'file' => $request->file,
-           
-
         ]);
-    if( $file= $request->file('file')){
+    
+        if($request->hasFile('file')) {
+             $file = $request->file;         
+             $file->move('files', $file->getClientOriginalName());   
+        } 
+     return redirect('/home');
+    }
+     /* if( $file= $request->file('file')){
         $filename = $file->getClientOriginalName();
         $path = $file->storeAS('files', $filename);
 dd($path);
-        //$file->store('files',$filename);
-      //  $post = new Post();
-     //   $post->file =$filename;
-    }
-   /* if($request->hasFile('file')){
-        $filenameWithExt = $request->file('file')->getClientOriginalName();
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        $extension = $request->file('file')->getClientOriginalExtension();
-        $fileNameToStore = $filename . '_' . time() . '.' . $extension; 
-        $path = $request->file('file')->storeAs('public/files', $fileNameToStore);
-    } */
- 
+        $file->store('files',$filename);
+       $post = new Post();
+       $post->file =$filename;
+    }*/
+
    /* if($file = $request->file('file')) {
     $input['filename'] = time() . '.' . $file->getClientOriginalExstension();
     $destination = public_path('/files');
@@ -44,8 +44,15 @@ dd($path);
 }*/
 
 
-        return redirect('/home');
-    }
+/*if($file = $request->file('file')) {
+    $filename = $file->getClientOriginalName();
+    Storage::disk('local')->put($filename, File::get($file));
+    
+}*/
+
+
+   //     return redirect('/home');
+   // }
 
      /**
      * Destroy the given post.

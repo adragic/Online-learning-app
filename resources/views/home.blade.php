@@ -48,11 +48,11 @@
                         @foreach($posts as $post)
                         <article class="post">
                             <p> {{ $post->body }} </p>
-                            <p> <img src="{{ asset('public/files/' . $post->file) }}"> </p>
+                            <p> {{ $post->file }} </p>
                             <div class="info">
                                 Posted by {{ $post->user->name }} on {{ $post->created_at }}
                             </div>
-                             <!-- Like Button -->
+                             <!-- Like Button 
                             <td>
                       		    <form style="display: inline-block;">
                       												
@@ -61,7 +61,7 @@
                       				</button>
                       			</form>
                             </td>
-                            <!-- Dislike Button -->
+                             Dislike Button 
                             <td>
                       		    <form style="display: inline-block;">
                       												
@@ -69,7 +69,7 @@
                       				    <i class="fa fa-btn fa-edit"></i>Dislike
                       				</button>
                       			</form>
-                            </td>
+                            </td> -->
                             @if(Auth::user() == $post->user)
                              <!-- Post Edit Button -->
                             <td>

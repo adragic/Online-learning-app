@@ -48,6 +48,8 @@ class QuestionController extends Controller
            
         return redirect('/forum');
     }
+   
+    
 
     /**
      * Display the specified resource.
@@ -96,7 +98,7 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(Request $request, Question $question)
     {
         //
         $this->authorize('destroy', $question);

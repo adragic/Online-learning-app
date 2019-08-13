@@ -73,9 +73,10 @@
                                         </button>
                                 </form>
                             </td>
+                            @endif
                             <!-- Answer-->
                             <form action="{{url('answer')}}" method="post" >
-                    {{ csrf_field() }}
+                         {{ csrf_field() }}
                         <div class="form-group">
                             <textarea class="form-control" name="answer_body" id="answer-content" rows="3" placeholder="Your ansewer">
                             </textarea>
@@ -84,9 +85,18 @@
 
                         <button type="submit" class="btn btn-primary">Answer</button>
                         <input type="hidden" value="{{ Session::token() }}" name="token">
-                    </form>
+                            </form>
 
-                            @endif
+                            
+                       <!--     @foreach($question->answers as $answer)
+                        <article class="post">
+                            <p> {{ $answer->answer_body }} </p>
+                            <div class="info">
+                                Posted by {{ $answer->user->name }} on {{ $answer->created_at }}
+                            </div>
+                        </article>
+                        @endforeach-->
+                        
                         </article>
                         @endforeach
                         

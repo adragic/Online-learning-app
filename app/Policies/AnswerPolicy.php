@@ -4,9 +4,10 @@ namespace App\Policies;
 
 use App\User;
 use App\Answer;
+use App\Question;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class QuestionPolicy
+class AnswerPolicy
 {
     use HandlesAuthorization;
 
@@ -23,8 +24,10 @@ class QuestionPolicy
     {
         return $user->id === $answer->user_id;
     }
-    public function checkowner(User $user, Answer $answer)
+    public function checkowner(User $user, Question $question, Answer $answer)
     {
         return $user->id === $answer->user_id;
+        return $question->id === $answer->question_id;
     }
+    
 }

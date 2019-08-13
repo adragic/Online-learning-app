@@ -18,10 +18,12 @@ class Answer extends Model
         'user_id' => 'int',
     ];
 
+
     public function user(){
         return $this->belongsTo(User::class);
     }
     public function question(){
         return $this->belongsTo(Question::class);
     }
+   
 }
