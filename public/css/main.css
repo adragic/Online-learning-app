@@ -13,3 +13,7 @@
     color: #aaa;
     font-style: italic;
 }
+.form-control {
+    padding-top: 0;
+   padding-left: 0;
+}

@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Answer;
+use App\Thread;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,18 +22,12 @@ class QuestionController extends Controller
     {
         //
         $questions =Question::orderBy('created_at','desc')->get();
-        return view('forum', ['questions'=> $questions]);
+        $answers =Answer::orderBy('created_at','desc')->get();
+        $threads =Thread::orderBy('created_at','desc')->get();
+        return view('forum', ['questions'=> $questions, 'answers'=> $answers,'threads'=> $threads]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -35,32 +35,26 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request /*, $thread_id*/)
     {
         //
         $this->validate($request, [
             'question_body' => 'required|max:1500',
         ]);
 
-        $request->user()->questions()->create([
+$request->user()->questions()->create([
             'question_body' => $request->question_body,
         ]);
-           
+      
+     /*  $thread = Thread::find($thread_id);
+        $question = new Question();
+        $question->question_body = $request->question_body;
+        $question->thread()->associate($thread);
+        $question->save();*/
         return redirect('/forum');
+        //return redirect()->route('single', [$thread->id]);
     }
    
-    
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Question $question)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -107,4 +101,5 @@ class QuestionController extends Controller
 
         return redirect('/forum');
     }
+   
 }

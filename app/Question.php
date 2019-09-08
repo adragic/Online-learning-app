@@ -18,11 +18,16 @@ class Question extends Model
         
         'user_id' => 'int',
     ];
+    
 
+    
     public function user(){
         return $this->belongsTo(User::class);
     }
     public function answers(){
         return $this->hasMany(Answer::class);
+    }
+    public function thread(){
+        return $this->belongsTo(Thread::class);
     }
 }

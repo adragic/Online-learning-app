@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8" >
@@ -45,7 +47,9 @@
                     @endif
 
                     <section class="row-posts">
+                 
                         @foreach($questions as $question)
+                         <!--  ($threads->question as $question) izbacuje error not defined threads--> 
                         <article class="post">
                             <p> {{ $question->question_body }} </p>
                             <div class="info">
@@ -88,17 +92,18 @@
                             </form>
 
                             
-                       <!--     @foreach($question->answers as $answer)
+                     @foreach($question->answers as $answer)
                         <article class="post">
                             <p> {{ $answer->answer_body }} </p>
                             <div class="info">
                                 Posted by {{ $answer->user->name }} on {{ $answer->created_at }}
                             </div>
                         </article>
-                        @endforeach-->
+                        @endforeach 
                         
                         </article>
                         @endforeach
+               
                         
                     </section>
                 </div>

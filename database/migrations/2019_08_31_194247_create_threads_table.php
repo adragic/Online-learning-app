@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnswersTable extends Migration
+class CreateThreadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,14 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('threads', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('faculty');
             $table->timestamps();
-            $table->text('answer_body');
-            $table->unsignedBigInteger('question_id')->nullable();
             $table->unsignedBigInteger('user_id');
-           $table->foreign('question_id')->references('id')->on('questions');
-            $table->foreign('user_id')->references('id')->on('users');
-            
-           
         });
-
     }
+
     /**
      * Reverse the migrations.
      *
@@ -33,6 +28,6 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('threads');
     }
 }

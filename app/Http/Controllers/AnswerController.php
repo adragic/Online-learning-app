@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //use App\Answer;
+use App\Question;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -43,12 +44,12 @@ class AnswerController extends Controller
             'answer_body' => 'required|max:1500',
         ]);
 
-        $request->user()->answers()->create([
+       $request->user()->answers()->create([
             'answer_body' => $request->answer_body,
         ]);
-        //$request->question()->answers()->create([
-        //    'answer_body' => $request->answer_body,
-        //]);
+      /*  $request->question()->answers()->create([
+            'answer_body' => $request->answer_body,
+        ]);*/
            
         return redirect('/forum');
     }
