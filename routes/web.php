@@ -24,18 +24,6 @@ Route::delete('/post/{post}', 'PostController@destroy');
 
 Route::get('/edit/{post}', 'PostController@edit');
 Route::patch('/post/{post}', 'PostController@update');
-//questions
-Route::get('/forum', 'QuestionController@index')->name('forum');
-Route::post('/question', 'QuestionController@store')->name('question.store');
-//Route::post('/question/{thread_id}', 'QuestionController@store')->name('question.store');
-Route::delete('/question/{question}', 'QuestionController@destroy');
-
-Route::get('/editquestion/{question}', 'QuestionController@edit');
-Route::patch('/question/{question}', 'QuestionController@update');
-//answers
-Route::post('/answer', 'AnswerController@store');
-//Route::get('/forum', 'AnswerController@index');
-//Route::delete('/answer/{answer}', 'AnswerController@destroy');
 
 //thread
 Route::resource('/thread','ThreadController');
@@ -49,6 +37,8 @@ Route::post('comment/create/{thread}','CommentController@addThreadComment')->nam
 Route::get('/editcomment/{comment}', 'CommentController@edit');
 Route::patch('/comment/{comment}', 'CommentController@update');
 Route::delete('/comment/{comment}', 'CommentController@destroy');
+//reply
+Route::post('reply/create/{comment}','CommentController@addReplyComment')->name('replycomment.store');
 
 Route::auth();
 

@@ -41,10 +41,7 @@
                     <a class="nav-link" href="{{ url('/home') }}">Posts <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                     <a class="nav-link" href="{{ url('/forum') }}">Forum</a>
-                </li>
-                <li class="nav-item">
-                     <a class="nav-link" href="{{ url('/thread') }}">Test</a>
+                     <a class="nav-link" href="{{ url('/thread') }}">Forum</a>
                 </li>
                 </ul>
 

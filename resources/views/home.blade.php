@@ -17,8 +17,7 @@
                     <form action="{{url('post')}}" method="post" enctype="multiport/form-data">
                     {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea class="form-control" name="body" id="post-content" rows="5" placeholder="Your post">
-                            </textarea>
+                            <textarea class="form-control" name="body" id="post-content" rows="5" placeholder="Your post"></textarea>
                             <input type="file" name="file" id="file" >
                         </div>
 

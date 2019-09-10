@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+    use CommentableTrait; 
+    
     protected $fillable = [
         'faculty',
     ];
@@ -14,12 +16,6 @@ class Thread extends Model
     //
     public function user(){
         return $this->belongsTo(User::class);
-    }
-    public function question(){
-        return $this->hasMany(Question::class);
-    }
-    public function comments(){
-        return $this->morphMany(Comment::class, 'commentable');
     }
     
 }

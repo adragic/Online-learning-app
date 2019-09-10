@@ -52,8 +52,7 @@
                     <form action="{{url('thread')}}" method="post" >
                     {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea class="form-control" name="faculty" id="faculty-content" rows="1" placeholder="Name of the faculty">
-                            </textarea>
+                            <textarea class="form-control" name="faculty" id="faculty-content" rows="1" placeholder="Name of the faculty"></textarea>
                     
                         </div>
 

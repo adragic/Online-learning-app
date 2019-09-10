@@ -1,32 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- faculty-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8" >
             <div class="card">
-                <div class="card-header">Your faculty</div>
+                <div class="card-header">{{$thread->faculty}} </div>
 
-                <div class="card-body">
-                    <div class="list-group">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                   
-                        <p>{{$thread->faculty}} </p>
-                    
-
-                
-                   
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- new comment-question-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8" >
@@ -43,8 +30,7 @@
                     <form action="{{route('threadcomment.store',$thread->id)}}" method="post" >
                     {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea class="form-control" name="body" id="question-content" rows="3" placeholder="Your question">
-                            </textarea>
+                            <textarea class="form-control" name="body" id="question-content" rows="3" placeholder="Your question"></textarea>
                     
                         </div>
 
@@ -57,13 +43,8 @@
     </div>
 </div>
 
-<!--<div class="comment-list">
-    @foreach($thread->comments as $comment)
-    <h4>{{$comment->body}} </h4>
-    <lead> {{$comment->user->name}} </lead>
-    @endforeach
-</div> -->
 
+<!-- all questions and answers-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8" >
@@ -82,7 +63,7 @@
                     <article class="post">
                             <p> {{ $comment->body }} </p>
                             <div class="info">
-                                Posted by {{ $comment->user->name }}
+                                Posted by {{ $comment->user->name }} on {{ $comment->created_at }}
                             </div>
 
                             @if(Auth::user() == $comment->user)
@@ -108,7 +89,30 @@
                                 </form>
                             </td>
                             @endif
-                    </article>
+                    
+<br><br>
+                     <!-- Answer-->
+                    <form action="{{route('replycomment.store', $comment->id)}}" method="post" >
+                         {{ csrf_field() }}
+                        <div class="form-group">
+                            <textarea class="form-control" name="body" id="answer-content" rows="3" placeholder="Your answer"></textarea>
+                    
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Answer</button>
+                        <input type="hidden" value="{{ Session::token() }}" name="token">
+                    </form>
+<br><br>
+                            <!-- reply list-->
+                     @foreach($comment->comments as $reply)
+                        <article class="post reply-list">
+                            <p> {{ $reply->body }} </p>
+                            <div class="info">
+                                Posted by {{ $reply->user->name }} on {{ $reply->created_at }}
+                            </div>
+                        </article>
+                        @endforeach 
+                        </article>
                     @endforeach
                     </section>
 

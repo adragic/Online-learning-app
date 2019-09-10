@@ -14,12 +14,27 @@ class CommentController extends Controller
         $this->validate($request, [
             'body' => 'required|max:1500',
         ]);
-        $comment = new Comment();
-        $comment->body = $request->body;
-        $comment->user_id = auth()->user()->id;
-        $thread->comments()->save($comment);
+      //  $comment = new Comment();
+       // $comment->body = $request->body;
+       // $comment->user_id = auth()->user()->id;
+       // $thread->comments()->save($comment);
+       $thread->addComment($request->body);
+        return back();
+    }
+    public function addReplyComment(Request $request, Comment $comment)
+    {
 
-        return back()->withMessage('Created');
+        $this->validate($request, [
+            'body' => 'required|max:1500',
+        ]);
+      //  $reply = new Comment();
+      //  $reply->body = $request->body;
+      //  $reply->user_id = auth()->user()->id;
+        //save comment on comment
+       // $comment->comments()->save($reply);
+
+       $comment->addComment($request->body);
+        return back();
     }
     
     public function destroy(Request $request, Comment $comment)
