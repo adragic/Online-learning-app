@@ -11,19 +11,27 @@
 |
 */
 
+use App\Http\Controllers\PostController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-//posts
-Route::post('/post', 'PostController@store');
-Route::delete('/post/{post}', 'PostController@destroy');
 
+//post thread
+Route::get('/postthread', 'PostThreadController@index')->name('postthread');
+Route::post('/postthread', 'PostThreadController@store');
+Route::get('/postthreadsingle/{postthread_id}', 'PostThreadController@show')->name('postsingle');
+
+//posts
+Route::post('post/create/{postthread}','PostController@addThreadPost')->name('threadpost.store');
+Route::delete('/post/{post}', 'PostController@destroy');
 Route::get('/edit/{post}', 'PostController@edit');
 Route::patch('/post/{post}', 'PostController@update');
+//download file from post
+Route::get('downloadfile','PostController@downloadfunction')->name('downloadfile');
 
 //thread
 Route::resource('/thread','ThreadController');

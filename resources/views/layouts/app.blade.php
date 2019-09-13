@@ -9,8 +9,8 @@
 
     <title> Online learning app</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Scripts 
+    <script src="{{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,14 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- bootstrap
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
-    -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    
     
     
 </head>
 <body>
+
         <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white shadow-sm">
            
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,11 +37,12 @@
                      <a class="navbar-brand" href="{{ url('/') }}">Online learning app</a>
                     <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ url('/home') }}">Posts <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url('/postthread') }}">Posts <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                      <a class="nav-link" href="{{ url('/thread') }}">Forum</a>
                 </li>
+
                 </ul>
 
                     </ul>
@@ -81,11 +81,16 @@
                     </ul>
                 </div>
         </nav>
-    
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/bg-01.jpg"> 
+      
 
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+        </div>
+    <!-- scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/parallax.min.js"></script> 
 </body>
 </html>

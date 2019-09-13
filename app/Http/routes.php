@@ -28,17 +28,6 @@ Route::group(['middleware' => ['web']], function () {
         return view('welcome');
     })->middleware('guest');
 
- /* Route::get('/projects', 'ProjectController@index');
-    Route::post('/project', 'ProjectController@store');
-    Route::delete('/project/{project}', 'ProjectController@destroy');
-    
-    Route::get('/project/edit/{project}', 'ProjectController@edit');
-    Route::patch('/project/{project}', 'ProjectController@update');
-*/
-
-Route::post('/post', 'PostController@store');
-//Route::delete('/post/{post}', 'PostController@destroy');
-
 Route::auth();
 
 });

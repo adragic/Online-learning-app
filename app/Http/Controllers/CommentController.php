@@ -57,7 +57,7 @@ class CommentController extends Controller
     {
         $this->authorize('checkowner', $comment);
         $comment->update($request->all());
-        return redirect()->route('single',['thread_id' => 1]);
+        return redirect('/thread');
     }
 
   

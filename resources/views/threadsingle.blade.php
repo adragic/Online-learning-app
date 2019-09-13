@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- faculty-->
+<!-- faculty -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8" >
@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 <!-- new comment-question-->
 <div class="container">
@@ -59,7 +59,14 @@
                         </div>
                     @endif
                     <section class="row-posts">
+                    
+                       
                     @foreach($thread->comments as $comment)
+                    <!-- display each question in separate card body -->
+                    <div class="row justify-content-center ">
+                    <div class="card w-75 ">
+                    <div class="card-body">
+
                     <article class="post">
                             <p> {{ $comment->body }} </p>
                             <div class="info">
@@ -102,39 +109,46 @@
                         <button type="submit" class="btn btn-primary">Answer</button>
                         <input type="hidden" value="{{ Session::token() }}" name="token">
                     </form>
+                    
 <br><br>
+
                             <!-- reply list-->
                      @foreach($comment->comments as $reply)
+
+                    <!-- card inside card inside card -->
+                    <div class="row justify-content-center">
+                    <div class="card w-75">
+                    <div class="card-body">
+
                         <article class="post reply-list">
                             <p> {{ $reply->body }} </p>
                             <div class="info">
                                 Posted by {{ $reply->user->name }} on {{ $reply->created_at }}
                             </div>
                         </article>
-                        @endforeach 
+                        </div></div></div> <!-- end of card inside card inside card -->
+                        <br> <!-- break between replies -->
+                        @endforeach  <!-- end of reply list-->
+                    
                         </article>
-                    @endforeach
+                     </div></div></div> <!-- end of -display each question in separate card body -->
+                     <br> <!-- break between questions -->
+                    @endforeach <!-- end of question list-->
+                    
+                   
                     </section>
 
                 
                    
-                    </div>
-                </div>
-            </div>
+                 </div> <!-- end list-group -->
+                </div>  <!-- end card-body -->
+                
+                
+            </div>  <!-- end card-->
         </div>
     </div>
-</div>
+</div>  <!-- end container-->
 
 
-
-@endsection
-@section('js')
-
-    <script>
-        function toggleReply(commentId){
-            $('.reply-form-'+commentId).toggleClass('hidden');
-        }
-
-    </script>
 
 @endsection
