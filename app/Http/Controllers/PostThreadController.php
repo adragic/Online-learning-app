@@ -37,7 +37,7 @@ class PostThreadController extends Controller
 
     public function show($id)
     {
-        $postthread =postThread::find($id);
+        $postthread =PostThread::find($id);
         
         return view('postthreadsingle',['postthread'=> $postthread]);
     }

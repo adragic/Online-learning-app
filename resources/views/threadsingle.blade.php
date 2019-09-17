@@ -102,7 +102,8 @@
                     <form action="{{route('replycomment.store', $comment->id)}}" method="post" >
                          {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea class="form-control" name="body" id="answer-content" rows="3" placeholder="Your answer"></textarea>
+                            <textarea class="form-control" name="body" id="answer-content" rows="3" 
+                            placeholder="Your answer"></textarea>
                     
                         </div>
 
@@ -125,6 +126,31 @@
                             <div class="info">
                                 Posted by {{ $reply->user->name }} on {{ $reply->created_at }}
                             </div>
+
+                            @if(Auth::user() == $reply->user)
+                            
+                             <!-- Forum Edit Button -->
+                            <td>
+                                  <form style="display: inline-block;" action="{{url('editreply/'. $reply->id )}}" method="GET">
+                                    {{ csrf_field() }}			
+                      				    <button type="submit"  class="btn btn-danger">
+                      					    <i class="fa fa-btn fa-edit"></i>Edit
+                      				    </button>
+                      			</form>
+                            </td>
+                              <!-- Forum Delete Button -->
+                            <td>                                   
+                                <form action="{{url('reply/'. $reply->id)}}" method="POST" style="display: inline-block;">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                        <button type="submit" id="delete-post" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash"></i>Delete
+                                        </button>
+                                </form>
+                            </td>
+                            @endif
+
                         </article>
                         </div></div></div> <!-- end of card inside card inside card -->
                         <br> <!-- break between replies -->

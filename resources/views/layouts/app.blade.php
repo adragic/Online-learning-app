@@ -27,7 +27,8 @@
 
         <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white shadow-sm">
            
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -36,17 +37,14 @@
                     <ul class="navbar-nav mr-auto">
                      <a class="navbar-brand" href="{{ url('/') }}">Online learning app</a>
                     <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ url('/postthread') }}">Posts <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                     <a class="nav-link" href="{{ url('/thread') }}">Forum</a>
-                </li>
-
-                </ul>
-
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/postthread') }}">Posts <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/thread') }}">Forum</a>
+                        </li>
                     </ul>
-
+                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -61,7 +59,8 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" 
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -72,7 +71,8 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" 
+                                    style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
@@ -81,13 +81,13 @@
                     </ul>
                 </div>
         </nav>
-        <div class="parallax-window" data-parallax="scroll" data-image-src="img/bg-01.jpg"> 
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/computer.jpg"> 
       
-
         <main class="py-4">
             @yield('content')
         </main>
-        </div>
+        
+        </div>   
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

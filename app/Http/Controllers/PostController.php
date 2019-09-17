@@ -63,13 +63,7 @@ class PostController extends Controller
             'post' => $post,
         ]);
     }
-    /**
-     * Update the current post
-     * 
-     * @param Request $request
-     * @param Project $post
-     * @return type
-     */
+    
     public function update(Request $request, Post $post)
     {
         $this->authorize('checkowner', $post);
@@ -77,10 +71,23 @@ class PostController extends Controller
         return redirect('/postthread');
     }
 
-    public function downloadfunction(Post $post)
+    public function downloadfunction($filename= '')
     { 
-        $downloads=DB::table('posts')->get();
-        return back(compact('downloads'));
-
+    
+        // Check if file exists in app/storage/file folder
+        $file_path = storage_path() . "storage/app/public/files" . $filename;
+        $headers = array(
+            'Content-Type: csv',
+            'Content-Disposition: attachment; filename='.$filename,
+        );
+        if ( file_exists( $file_path ) ) {
+            // Send Download
+            return \Response::download( $file_path, $filename, $headers );
+        } else {
+            // Error
+            exit( 'Requested file does not exist on our server!' );
+        }
     }
+    
+    
 }

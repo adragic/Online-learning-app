@@ -1,6 +1,8 @@
+
 @extends('layouts.app')
 
 @section('content')
+
 <!-- faculty -->
 <div class="container">
     <div class="row justify-content-center">
@@ -27,10 +29,12 @@
                         </div>
                     @endif
 
-                    <form action="{{route('threadpost.store',$postthread->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('threadpost.store',$postthread->id)}}" method="post" 
+                        enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <div class="form-group">
-                            <textarea class="form-control" name="body" id="post-content" rows="5" placeholder="Your post"></textarea>
+                         <div class="form-group">
+                            <textarea class="form-control" name="body" id="post-content" rows="5" placeholder="Your post">
+                            </textarea>
                             <input type="file" name="file" id="file" >
                         </div>
 
@@ -68,7 +72,7 @@
 
                     <article class="post">
                             <p> {{ $post->body }} </p>
-                            <a href="storage/app/public/files/{{ $post->file }}"  download="{{$post->file  }}">
+                            <a href="{{route('downloadfile',$post->file)}}"  download="{{$post->file  }}">
                             {{$post->file}}
                             </a>
                             <div class="info">
@@ -112,7 +116,5 @@
         </div>
     </div>
 </div>
-
-
 
 @endsection

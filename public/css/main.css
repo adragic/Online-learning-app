@@ -13,12 +13,6 @@
 }
 
 
-content{
-    background: #654ea3;
-    background: -webkit-linear-gradient(to left, #654ea3, #eaafc8);
-    background: linear-gradient(to left, #654ea3, #eaafc8);
-    min-height: 100vh;
-}
 
 /* About Page */
 #tmAbout {
@@ -120,30 +114,9 @@ content{
 
 
 
-  /*
-
-Parallo Template
-
-https://templatemo.com/tm-534-parallo
-
-COLOR CODE
-Dark Brown: #333333
-Green: #006666
-Light Blue: #0099CC
-Blue: #039bcd
-nav link color: #666768
-
-Page 1 Image 1x1 size 400px
-3 boxes spacing 60px
-Logo size: 400x200
-840x120
-
-Home section width: 420
-
-*/
-
 html {
     scroll-behavior: smooth;
+    
   }
   
   body {
@@ -152,8 +125,21 @@ html {
     font-weight: 400;
     color: #3f3f3f;
     overflow-x: hidden;
+    background: #85C1E9;
+    background: -webkit-linear-gradient(to left, #85C1E9,#F2F3F4 );
+    background: linear-gradient(to left, #85C1E9,#F2F3F4 );
+    min-height: 100vh;
     
   }
+ /* .hero-image {
+    background-image: url("/img/bg-01.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }*/
   
   a,
   button {
@@ -211,6 +197,10 @@ html {
   .tm-brand-name {
     font-size: 2.3rem;
     color: #333333;
+  }
+
+  content {
+    background-image: url(https://cdn.pixabay.com/photo/2016/11/22/23/03/hardwood-1851071_960_720.jpg);
   }
 
   

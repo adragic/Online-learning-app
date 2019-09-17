@@ -31,7 +31,9 @@ Route::delete('/post/{post}', 'PostController@destroy');
 Route::get('/edit/{post}', 'PostController@edit');
 Route::patch('/post/{post}', 'PostController@update');
 //download file from post
-Route::get('downloadfile','PostController@downloadfunction')->name('downloadfile');
+Route::get('downloadfile/{filename}','PostController@downloadfunction')->name('downloadfile');
+#route to download file
+
 
 //thread
 Route::resource('/thread','ThreadController');
@@ -47,6 +49,9 @@ Route::patch('/comment/{comment}', 'CommentController@update');
 Route::delete('/comment/{comment}', 'CommentController@destroy');
 //reply
 Route::post('reply/create/{comment}','CommentController@addReplyComment')->name('replycomment.store');
+Route::get('/editreply/{comment}', 'CommentController@editreply');
+Route::patch('/reply/{comment}', 'CommentController@updatereply');
+Route::delete('/reply/{comment}', 'CommentController@destroyreply');
 
 Route::auth();
 

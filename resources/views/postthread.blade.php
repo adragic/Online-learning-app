@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container" >
     <div class="row justify-content-center">
         <div class="col-md-8" >
             <div class="card">
@@ -46,10 +46,10 @@
                     <form action="{{url('postthread')}}" method="post" >
                     {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea class="form-control" name="faculty" id="faculty-content" rows="1" placeholder="Name of the faculty"></textarea>
+                            <textarea class="form-control" name="faculty" id="faculty-content" rows="1" 
+                            placeholder="Name of the faculty"></textarea>
                     
                         </div>
-
                         <button type="submit" class="btn btn-primary">Add</button>
                         <input type="hidden" value="{{ Session::token() }}" name="token">
                     </form>
